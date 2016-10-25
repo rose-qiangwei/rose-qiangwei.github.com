@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/base.css"/>
+<script>
+	(function(win,doc){
+		function change(){
+			doc.documentElement.style.fontSize=doc.documentElement.clientWidth/320*20+'px';	
+		}	
+		change();
+		win.addEventListener('resize',change,false);
+	})(window,document);
+
+	window.onload=function(){
+		var oUl=document.querySelector('.lun ul');
+		var aLi=oUl.children;
+		var oOl=document.getElementById('box')
+		var aBtn=oOl.getElementsByTagName('li');
+		
+		var iNow=0;
+		var x=0;
+		var oCw=document.documentElement.clientWidth;
+		oUl.addEventListener('touchstart',function(ev){
+			oUl.style.WebkitTransition='none';
+			var downX=ev.targetTouches[0].clientX;
+			var disX=downX-x;
+	
+			function fnMove(ev){
+				x=ev.targetTouches[0].clientX-disX;
+				
+				oUl.style.WebkitTransform='translate3d('+x+'px,0,0)';
+			}
+			
+			function fnEnd(ev){
+				document.removeEventListener('touchmove',fnMove,false);
+				document.removeEventListener('touchend',fnEnd,false);	
+				var upX=ev.changedTouches[0].clientX;
+				
+				var mX=downX-upX;
+				
+				if(Math.abs(mX)>50){
+					//切换
+					if(downX>upX){
+						//往左走
+						iNow++;
+						if(iNow==aLi.length){
+							iNow=aLi.length-1;
+						}
+					}else{
+						//往右走
+						iNow--;
+						if(iNow==-1){
+							iNow=0;
+						}
+					}				
+				}
+				for(var i=0;i<aBtn.length;i++){
+					aBtn[i].className='';
+					}
+				aBtn[iNow].className='red';
+				x=-oCw*iNow;
+				oUl.style.WebkitTransition='0.5s all ease';
+				oUl.style.WebkitTransform='translate3d('+x+'px,0,0)';	
+			}
+			
+			document.addEventListener('touchmove',fnMove,false);
+			document.addEventListener('touchend',fnEnd,false);
+			ev.preventDefault();
+				
+		},false);
+			
+	};
+	
+</script>
+</head>
+
+<body>
+<header class="head">
+       <a href="#"></a>
+       <h1></h1>
+</header>
+<section>
+        <div class="lun">
+             <ul class="clearfix">
+                 <li><img src="img/2.png"/></li>
+                 <li><img src="img/2.png"/></li>
+                 <li><img src="img/2.png"/></li>
+                 <li><img src="img/2.png"/></li>
+                 <li><img src="img/2.png"/></li>
+             </ul>
+        </div>
+        <div class="dian" id="box">
+             <ul class="clearfix">
+                <li class="red"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+             </ul>
+        </div>
+        <nav>
+             <ul>
+                 <li>
+                     <a href="#" class="pic"></a>
+                     <a href="#">商品</a>
+                 </li>
+                 <li>
+                     <a href="#" class="pic"></a>
+                     <a href="#">生活</a>
+                 </li>
+                 <li>
+                     <a href="#" class="pic"></a>
+                     <a href="#">品牌</a>
+                 </li>
+                 <li>
+                     <a href="#" class="pic"></a>
+                     <a href="#">聚宝盆</a>
+                 </li>
+                 <li>
+                     <a href="#" class="pic"></a>
+                     <a href="#">聚名品</a>
+                 </li>
+                 <li>
+                     <a href="#" class="pic"></a>
+                     <a href="#">聚家装</a>
+                 </li>
+                 <li>
+                     <a href="#" class="pic"></a>
+                     <a href="#">聚透</a>
+                 </li>
+                 <li>
+                     <a href="#" class="pic"></a>
+                     <a href="#">客户端</a>
+                 </li>
+             </ul>
+        </nav>
+        <div class="top clearfix">
+             <h1 class="fl">聚划算热卖排行</h1>
+             <p class="fr">TOP10</p>
+        </div>
+        <ul class="list clearfix">
+            <li>
+                <div class="kuai fl">1</div>
+                <img src="img/13.png" class="fl"/>
+                <div class="zi fl">
+                     <div class="zuo fl">
+                         <p>已售6823</p>
+                         <p class="sec">
+                            <span>2.3</span>折
+                            <b>¥233</b>
+                         </p>
+                     </div>
+                     <div class="you fr">
+                         ¥51
+                         <b>&gt</b>
+                     </div>
+                </div>
+            </li>
+            <li>
+                <div class="kuai fl">2</div>
+                <img src="img/14.png" class="fl"/>
+                <div class="zi fl">
+                     <div class="zuo fl">
+                         <p>已售6823</p>
+                         <p class="sec">
+                            <span>2.3</span>折
+                            <b>¥233</b>
+                         </p>
+                     </div>
+                     <div class="you fr">
+                         ¥51
+                         <b>&gt</b>
+                     </div>
+                </div>
+            </li>
+            <li>
+                <div class="kuai fl">3</div>
+                <img src="img/15.png" class="fl"/>
+                <div class="zi fl">
+                     <div class="zuo fl">
+                         <p>已售6823</p>
+                         <p class="sec">
+                            <span>2.3</span>折
+                            <b>¥233</b>
+                         </p>
+                     </div>
+                     <div class="you fr">
+                         ¥51
+                         <b>&gt</b>
+                     </div>
+                </div>
+            </li>
+            <li>
+                <div class="kuai fl">4</div>
+                <img src="img/16.png" class="fl"/>
+                <div class="zi fl">
+                     <div class="zuo fl">
+                         <p>已售6823</p>
+                         <p class="sec">
+                            <span>2.3</span>折
+                            <b>¥233</b>
+                         </p>
+                     </div>
+                     <div class="you fr">
+                         ¥51
+                         <b>&gt</b>
+                     </div>
+                </div>
+            </li>
+            <li>
+                <div class="kuai fl">5</div>
+                <img src="img/17.png" class="fl"/>
+                <div class="zi fl">
+                     <div class="zuo fl">
+                         <p>已售6823</p>
+                         <p class="sec">
+                            <span>2.3</span>折
+                            <b>¥233</b>
+                         </p>
+                     </div>
+                     <div class="you fr">
+                         ¥51
+                         <b>&gt</b>
+                     </div>
+                </div>
+            </li>
+            <li>
+                <div class="kuai fl">6</div>
+                <img src="img/18.png" class="fl"/>
+                <div class="zi fl">
+                     <div class="zuo fl">
+                         <p>已售6823</p>
+                         <p class="sec">
+                            <span>2.3</span>折
+                            <b>¥233</b>
+                         </p>
+                     </div>
+                     <div class="you fr">
+                         ¥51
+                         <b>&gt</b>
+                     </div>
+                </div>
+            </li>
+            <li>
+                <div class="kuai fl">7</div>
+                <img src="img/19.png" class="fl"/>
+                <div class="zi fl">
+                     <div class="zuo fl">
+                         <p>已售6823</p>
+                         <p class="sec">
+                            <span>2.3</span>折
+                            <b>¥233</b>
+                         </p>
+                     </div>
+                     <div class="you fr">
+                         ¥51
+                         <b>&gt</b>
+                     </div>
+                </div>
+            </li>
+            <li>
+                <div class="kuai fl">8</div>
+                <img src="img/20.png" class="fl"/>
+                <div class="zi fl">
+                     <div class="zuo fl">
+                         <p>已售6823</p>
+                         <p class="sec">
+                            <span>2.3</span>折
+                            <b>¥233</b>
+                         </p>
+                     </div>
+                     <div class="you fr">
+                         ¥51
+                         <b>&gt</b>
+                     </div>
+                </div>
+            </li>
+            <li>
+                <div class="kuai fl">9</div>
+                <img src="img/21.png" class="fl"/>
+                <div class="zi fl">
+                     <div class="zuo fl">
+                         <p>已售6823</p>
+                         <p class="sec">
+                            <span>2.3</span>折
+                            <b>¥233</b>
+                         </p>
+                     </div>
+                     <div class="you fr">
+                         ¥51
+                         <b>&gt</b>
+                     </div>
+                </div>
+            </li>
+            <li>
+                <div class="kuai fl">10</div>
+                <img src="img/22.png" class="fl"/>
+                <div class="zi fl">
+                     <div class="zuo fl">
+                         <p>已售6823</p>
+                         <p class="sec">
+                            <span>2.3</span>折
+                            <b>¥233</b>
+                         </p>
+                     </div>
+                     <div class="you fr">
+                         ¥51
+                         <b>&gt</b>
+                     </div>
+                </div>
+            </li>
+        </ul>
+       <h2 class="more">更多划算   逛起来！</h2>
+       <div class="shang clearfix">
+            <div class="pin fl">商品团</div>
+            <ul class="fl">
+                <li><a href="#"><span>服饰</span></a></li>
+                <li><a href="#">配饰</a></li>
+                <li><a href="#">美妆</a></li>
+                <li><a href="#">鞋包</a></li>
+                <li><a href="#">食品</a></li>
+                <li><a href="#"><span>家居</span></a></li>
+                <li><a href="#">运动</a></li>
+                <li><a href="#"><span>电器</span></a></li>
+                <li><a href="#">百货</a></li>
+                <li><a href="#">母婴</a></li>
+                <li><a href="#">数码</a></li>
+                <li><a href="#">更多</a></li>
+            </ul>
+       </div>
+       <h2 class="more">精彩商品   逛起来！</h2>
+       <div class="sheng clearfix">
+            <div class="pin fl">生活团</div>
+            <ul class="fl">
+                <li><a href="#"><span>美食</span></a></li>
+                <li><a href="#">教育</a></li>
+                <li><a href="#">酒店</a></li>
+                <li><a href="#">电影</a></li>
+                <li><a href="#">生活服务</a></li>
+                <li><a href="#"><span>卡券</span></a></li>
+                <li><a href="#">摄影</a></li>
+                <li><a href="#"><span>粮油生鲜</span></a></li>
+                <li><a href="#">门票</a></li>
+                <li><a href="#">休闲娱乐</a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+       </div>
+       <h2 class="more">品质生活   逛起来！</h2>
+       <div class="shsng clearfix">
+            <div class="pin fl">品牌团</div>
+            <ul class="fl">
+                <li><a href="#"><span>七匹狼</span></a></li>
+                <li><a href="#">粉红女</a></li>
+                <li><a href="#">卓诗尼</a></li>
+                <li><a href="#">收纳博士</a></li>
+                <li><a href="#">惠氏</a></li>
+                <li><a href="#"><span>夏乐</span></a></li>
+                <li><a href="#">帕克伦</a></li>
+                <li><a href="#"><span>古今</span></a></li>
+                <li><a href="#">九牧</a></li>
+                <li><a href="#">诺奥</a></li>
+                <li><a href="#">红豆</a></li>
+                <li><a href="#">曼秀雷敦</a></li>
+            </ul>
+       </div>
+       <h2 class="more">品牌折扣   逛起来！</h2>
+       <ul class="apple">
+           <li></li>
+           <li></li>
+           <li></li>
+       </ul>
+       <div class="last">
+            <a href="#" class="deng">登录</a>
+            <a href="#" class="zhu">注册</a>
+            <span class="sp fr">TOP</span>
+       </div>
+</section>
+<footer class="foot">
+      <a href="#">标准版</a>
+      <a href="#">电脑版</a>
+      <p>©2013浙B2-20080224  服务中心</p>
+</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
